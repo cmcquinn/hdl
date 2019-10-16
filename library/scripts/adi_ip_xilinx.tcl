@@ -288,19 +288,14 @@ proc adi_ip_create {ip_name} {
 # \param[ip_files] - IP files (*.v *.vhd *.xdc)
 #
 proc adi_ip_files {ip_name ip_files} {
-
-  global ip_constr_files
-
-  set ip_constr_files ""
+  set proj_fileset [get_filesets sources_1]
   foreach m_file $ip_files {
     if {[file extension $m_file] eq ".xdc"} {
-      lappend ip_constr_files $m_file
       add_files -norecurse -fileset constrs_1 $m_file
+    } else {
+      add_files -norecurse -scan_for_includes -fileset $proj_fileset $m_file
     }
   }
-
-  set proj_fileset [get_filesets sources_1]
-  add_files -norecurse -scan_for_includes -fileset $proj_fileset $ip_files
   set_property "top" "$ip_name" $proj_fileset
 }
 
@@ -309,9 +304,6 @@ proc adi_ip_files {ip_name ip_files} {
 # \param[ip_name] - The ip name
 #
 proc adi_ip_properties_lite {ip_name} {
-
-  global ip_constr_files
-
   ipx::package_project -root_dir . -vendor analog.com -library user -taxonomy /Analog_Devices
   set_property name $ip_name [ipx::current_core]
   set_property vendor_display_name {Analog Devices} [ipx::current_core]
@@ -338,12 +330,13 @@ proc adi_ip_properties_lite {ip_name} {
   ipx::save_core
 
   set i_filegroup [ipx::get_file_groups -of_objects [ipx::current_core] -filter {NAME =~ *synthesis*}]
-  foreach i_file $ip_constr_files {
-    set i_module [file tail $i_file]
-    regsub {_constr\.xdc} $i_module {} i_module
-    ipx::add_file $i_file $i_filegroup
-    ipx::reorder_files -front $i_file $i_filegroup
-    set_property SCOPED_TO_REF $i_module [ipx::get_files $i_file -of_objects $i_filegroup]
+  set i_src_files [ipx::get_files -of_object $i_filegroup]
+
+  foreach i_file  $i_src_files {
+    if {[file extension $i_file ] eq ".xdc"} {
+      set_property SCOPED_TO_REF $ip_name [ipx::get_files [lindex $i_file  3] -of_objects $i_filegroup]
+      ipx::reorder_files -front [lindex $i_file  3] $i_filegroup
+    }
   }
   ipx::save_core
 }
