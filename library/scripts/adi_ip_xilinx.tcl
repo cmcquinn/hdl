@@ -244,10 +244,6 @@ proc adi_ip_add_core_dependencies {vlnvs} {
   }
 }
 
-## List of all constraint files
-#
-set ip_constr_files ""
-
 ## Create a project which will be packed as an IP.
 #
 # \param[ip_name] - IP name
@@ -256,7 +252,6 @@ proc adi_ip_create {ip_name} {
 
   global ad_hdl_dir
   global ad_ghdl_dir
-  global ip_constr_files
   global REQUIRED_VIVADO_VERSION
   global IGNORE_VERSION_CHECK
 
@@ -272,7 +267,6 @@ proc adi_ip_create {ip_name} {
   ## Load custom message severity definitions
   source $ad_hdl_dir/projects/scripts/adi_xilinx_msg.tcl
 
-  set ip_constr_files ""
   set lib_dirs $ad_hdl_dir/library
   if {$ad_hdl_dir ne $ad_ghdl_dir} {
     lappend lib_dirs $ad_ghdl_dir/library
@@ -304,8 +298,13 @@ proc adi_ip_files {ip_name ip_files} {
 # \param[ip_name] - The ip name
 #
 proc adi_ip_properties_lite {ip_name} {
+
+  global ad_hdl_dir
+
   ipx::package_project -root_dir . -vendor analog.com -library user -taxonomy /Analog_Devices
+
   set_property name $ip_name [ipx::current_core]
+
   set_property vendor_display_name {Analog Devices} [ipx::current_core]
   set_property company_url {http://www.analog.com} [ipx::current_core]
 
@@ -320,25 +319,31 @@ proc adi_ip_properties_lite {ip_name} {
     set s_families "$s_families $i_family Beta"
   }
   set_property supported_families $s_families [ipx::current_core]
-  ipx::save_core
+
+  ipx::save_core [ipx::current_core]
 
   ipx::remove_all_bus_interface [ipx::current_core]
   set memory_maps [ipx::get_memory_maps * -of_objects [ipx::current_core]]
   foreach map $memory_maps {
-    ipx::remove_memory_map [lindex $map 2] [ipx::current_core ]
+    ipx::remove_memory_map [lindex $map 2] [ipx::current_core]
   }
-  ipx::save_core
+
+  ipx::save_core [ipx::current_core]
 
   set i_filegroup [ipx::get_file_groups -of_objects [ipx::current_core] -filter {NAME =~ *synthesis*}]
   set i_src_files [ipx::get_files -of_object $i_filegroup]
 
   foreach i_file  $i_src_files {
     if {[file extension $i_file ] eq ".xdc"} {
+      puts "DBG: \$ip_name is $ip_name \n \$i_file is [lindex $i_file 3] and \$i_filegroups is $i_filegroup"
       set_property SCOPED_TO_REF $ip_name [ipx::get_files [lindex $i_file  3] -of_objects $i_filegroup]
       ipx::reorder_files -front [lindex $i_file  3] $i_filegroup
     }
   }
-  ipx::save_core
+
+  ipx::update_checksums [ipx::current_core]
+  ipx::save_core [ipx::current_core]
+
 }
 
 ## Set AXI interface IP proprieties.
