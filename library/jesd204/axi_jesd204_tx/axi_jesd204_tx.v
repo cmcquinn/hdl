@@ -168,7 +168,7 @@ up_axi #(
   .up_rack(up_rack)
 );
 
-jesd204_up_common #(
+axi_jesd204_common #(
   .PCORE_VERSION(PCORE_VERSION),
   .PCORE_MAGIC(PCORE_MAGIC),
   .ID(ID),

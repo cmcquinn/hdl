@@ -5,7 +5,7 @@
 
 LIBRARY_NAME := axi_jesd204_common
 
-GENERIC_DEPS += jesd204_up_common.v
+GENERIC_DEPS += axi_jesd204_common.v
 GENERIC_DEPS += jesd204_up_sysref.v
 
 XILINX_DEPS += ../../common/up_clock_mon.v

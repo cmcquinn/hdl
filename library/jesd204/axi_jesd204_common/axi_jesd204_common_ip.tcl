@@ -50,7 +50,7 @@ adi_ip_create axi_jesd204_common
 add_files -fileset [get_filesets sources_1] [list \
   "../../xilinx/common/up_clock_mon_constr.xdc" \
   "../../common/up_clock_mon.v" \
-  "jesd204_up_common.v" \
+  "axi_jesd204_common.v" \
   "jesd204_up_sysref.v" \
 ]
 
