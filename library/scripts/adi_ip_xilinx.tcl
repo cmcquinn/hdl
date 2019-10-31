@@ -327,23 +327,9 @@ proc adi_ip_properties_lite {ip_name} {
   foreach map $memory_maps {
     ipx::remove_memory_map [lindex $map 2] [ipx::current_core]
   }
-
-  ipx::save_core [ipx::current_core]
-
-  set i_filegroup [ipx::get_file_groups -of_objects [ipx::current_core] -filter {NAME =~ *synthesis*}]
-  set i_src_files [ipx::get_files -of_object $i_filegroup]
-
-  foreach i_file  $i_src_files {
-    if {[file extension $i_file ] eq ".xdc"} {
-      puts "DBG: \$ip_name is $ip_name \n \$i_file is [lindex $i_file 3] and \$i_filegroups is $i_filegroup"
-      set_property SCOPED_TO_REF $ip_name [ipx::get_files [lindex $i_file  3] -of_objects $i_filegroup]
-      ipx::reorder_files -front [lindex $i_file  3] $i_filegroup
-    }
-  }
-
+  
   ipx::update_checksums [ipx::current_core]
   ipx::save_core [ipx::current_core]
-
 }
 
 ## Set AXI interface IP proprieties.
