@@ -154,6 +154,18 @@ module axi_adc_trigger #(
   wire                  embedded_trigger;
   wire                  external_trigger;
 
+  wire         [31:0]   read_window_cnt_s;
+  wire         [ 7:0]   up_window_trigger_config_s;
+  wire         [15:0]   up_limit_l2_s;
+  wire         [15:0]   up_limit_l1_s;
+  wire         [15:0]   up_hysteresis_l2_s;
+  wire         [15:0]   up_hysteresis_l1_s;
+  wire         [15:0]   up_cnt_start_s;
+  wire         [15:0]   up_cnt_stop_s;
+  wire         [31:0]   up_window_limit_s;
+  wire         [31:0]   up_limit_interval_s;
+  wire                  window_trigger_s;
+
   reg                   trigger_a_d1; // synchronization flip flop
   reg                   trigger_a_d2; // synchronization flip flop
   reg                   trigger_a_d3;
@@ -470,6 +482,7 @@ module axi_adc_trigger #(
       4'h6: trigger_out_mixed = trigger_a | trigger_in;
       4'h7: trigger_out_mixed = trigger_b | trigger_in;
       4'h8: trigger_out_mixed = trigger_a | trigger_b | trigger_in;
+      4'h9: trigger_out_mixed = window_trigger_s;
       default: trigger_out_mixed = trigger_a;
     endcase
   end
@@ -526,6 +539,26 @@ module axi_adc_trigger #(
   assign passthrough_low_b_s = old_comp_high_b & !comp_high_b & first_b_l_trigger;
   assign comp_low_b_s = !comp_high_b;
 
+  axi_adc_trigger_window window_trigger (
+
+    .clk (clk),
+    .data_a (data_a),
+    .data_b (data_b),
+    .data_valid_a (data_valid_a),
+    .data_valid_b (data_valid_b),
+    .window_trigger_config (window_trigger_config_s),
+    .limit_l1 (limit_l1_s),
+    .limit_l2 (limit_l2_s),
+    .hysteresis_l1 (hysteresis_l1_s),
+    .hysteresis_l2 (hysteresis_l2_s),
+    .cnt_start (cnt_start_s),
+    .cnt_stop (cnt_stop_s),
+    .window_limit (window_limit_s),
+    .limit_interval (limit_interval_s),
+    .read_window_cnt (read_window_cnt_s),
+    .trigger_out (window_trigger_s)
+  );
+
   axi_adc_trigger_reg adc_trigger_registers (
 
   .clk(clk),
@@ -557,6 +590,17 @@ module axi_adc_trigger #(
   .fifo_depth(fifo_depth),
 
   .streaming(streaming),
+
+  .window_trigger_config (window_trigger_config_s),
+  .limit_l1 (limit_l1_s),
+  .limit_l2 (limit_l2_s),
+  .hysteresis_l1 (hysteresis_l1_s),
+  .hysteresis_l2 (hysteresis_l2_s),
+  .cnt_start (cnt_start_s),
+  .cnt_stop (cnt_stop_s),
+  .window_limit (window_limit_s),
+  .limit_interval (limit_interval_s),
+  .read_window_cnt (read_window_cnt_s),
 
   // bus interface
 

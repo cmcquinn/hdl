@@ -66,6 +66,17 @@ module axi_adc_trigger_reg (
 
   output              streaming,
 
+  output      [ 7:0]  window_trigger_config,
+  output      [15:0]  limit_l1,
+  output      [15:0]  limit_l2,
+  output      [15:0]  hysteresis_l1,
+  output      [15:0]  hysteresis_l2,
+  output      [15:0]  cnt_start,
+  output      [15:0]  cnt_stop,
+  output      [31:0]  window_limit,
+  output      [31:0]  limit_interval,
+  input       [31:0]  read_window_cnt,
+
  // bus interface
 
   input               up_rstn,
@@ -85,7 +96,7 @@ module axi_adc_trigger_reg (
 
   // internal registers
 
-  reg     [31:0]  up_version = 32'h00030000;
+  reg     [31:0]  up_version = 32'h00040000;
   reg     [31:0]  up_scratch = 32'h0;
   reg     [ 7:0]  up_io_selection = 8'h0;
   reg     [ 1:0]  up_trigger_o = 2'h0;
@@ -104,12 +115,28 @@ module axi_adc_trigger_reg (
   reg     [31:0]  up_trigger_holdoff = 32'h0;
   reg             up_triggered = 1'h0;
   reg             up_streaming = 1'h0;
+  reg     [31:0]  up_read_window_cnt = 32'h0;
+  reg     [31:0]  read_window_cnt_m1 = 32'h0;
+  reg     [ 7:0]  up_window_trigger_config = 12'h0;
+  reg     [15:0]  up_limit_l2 = 16'h0;
+  reg     [15:0]  up_limit_l1 = 16'h0;
+  reg     [15:0]  up_hysteresis_l2 = 16'h0;
+  reg     [15:0]  up_hysteresis_l1 = 16'h0;
+  reg     [15:0]  up_cnt_start = 16'h0;
+  reg     [15:0]  up_cnt_stop = 16'h0;
+  reg     [31:0]  up_window_limit =  32'h0;
+  reg     [31:0]  up_limit_interval =  32'h0;
 
   assign low_level  = config_trigger_i[1:0];
   assign high_level = config_trigger_i[3:2];
   assign any_edge   = config_trigger_i[5:4];
   assign rise_edge  = config_trigger_i[7:6];
   assign fall_edge  = config_trigger_i[9:8];
+
+  always @(posedge up_clk) begin
+    read_window_cnt_m1 <= read_window_cnt;
+    up_read_window_cnt <= read_window_cnt_m1;
+  end
 
   always @(negedge up_rstn or posedge up_clk) begin
     if (up_rstn == 0) begin
@@ -132,6 +159,15 @@ module axi_adc_trigger_reg (
       up_triggered <= 1'd0;
       up_streaming <= 1'd0;
       up_trigger_holdoff <= 32'h0;
+      up_window_trigger_config <= 12'h0;
+      up_limit_l2 <= 16'h0;
+      up_limit_l1 <= 16'h0;
+      up_hysteresis_l2 <= 16'h0;
+      up_hysteresis_l1 <= 16'h0;
+      up_cnt_start <= 16'h0;
+      up_cnt_stop <= 16'h0;
+      up_window_limit <=  32'h0;
+      up_limit_interval <=  32'h0;
     end else begin
       up_wack <= up_wreq;
       if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h1)) begin
@@ -190,6 +226,29 @@ module axi_adc_trigger_reg (
       if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h12)) begin
         up_trigger_holdoff <= up_wdata[31:0];
       end
+      if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h13)) begin
+        up_window_trigger_config <= up_wdata[11:0];
+      end
+      if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h14)) begin
+        up_limit_l1 <= up_wdata[15:0];
+        up_limit_l2 <= up_wdata[15:0];
+      end
+      if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h15)) begin
+        up_hysteresis_l1 <= up_wdata[15:0];
+        up_hysteresis_l2 <= up_wdata[15:0];
+      end
+      if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h16)) begin
+        up_cnt_start <= up_wdata[15:0];
+      end
+      if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h17)) begin
+        up_cnt_start <= up_wdata[15:0];
+      end
+      if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h18)) begin
+        up_window_limit <= up_wdata;
+      end
+      if ((up_wreq == 1'b1) && (up_waddr[4:0] == 5'h19)) begin
+        up_limit_interval <= up_wdata;
+      end
     end
   end
 
@@ -222,6 +281,14 @@ module axi_adc_trigger_reg (
           5'h10: up_rdata <= up_trigger_delay;
           5'h11: up_rdata <= {31'h0,up_streaming};
           5'h12: up_rdata <= up_trigger_holdoff;
+          5'h13: up_rdata <= {20'h0,up_window_trigger_config};
+          5'h14: up_rdata <= {up_limit_l2, up_limit_l1};
+          5'h15: up_rdata <= {up_hysteresis_l2,up_hysteresis_l1};
+          5'h16: up_rdata <= {16'h0,up_cnt_start};
+          5'h17: up_rdata <= {16'h0,up_cnt_stop};
+          5'h18: up_rdata <= up_window_limit;
+          5'h19: up_rdata <= up_limit_interval;
+          5'h1a: up_rdata <= up_read_window_cnt;
           default: up_rdata <= 0;
         endcase
       end else begin
@@ -230,7 +297,7 @@ module axi_adc_trigger_reg (
     end
   end
 
-   up_xfer_cntrl #(.DATA_WIDTH(242)) i_xfer_cntrl (
+   up_xfer_cntrl #(.DATA_WIDTH(414)) i_xfer_cntrl (
     .up_rstn (up_rstn),
     .up_clk (up_clk),
     .up_data_cntrl ({ up_streaming,           // 1
@@ -248,6 +315,15 @@ module axi_adc_trigger_reg (
                       up_trigger_out_control, // 17
                       up_fifo_depth,          // 32
                       up_trigger_holdoff,     // 32
+                      up_window_trigger_config, // 12
+                      up_limit_l2,            // 16
+                      up_limit_l1,            // 16
+                      up_hysteresis_l2,       // 16
+                      up_hysteresis_l1,       // 16
+                      up_cnt_start,           // 16
+                      up_cnt_stop,            // 16
+                      up_window_limit,        // 32
+                      up_limit_interval,      // 32
                       up_trigger_delay}),     // 32
 
     .up_xfer_done (),
@@ -268,6 +344,15 @@ module axi_adc_trigger_reg (
                       trigger_out_control,// 17
                       fifo_depth,         // 32
                       trigger_holdoff,    // 32
+                      window_trigger_config, // 12
+                      limit_l2,           // 16
+                      limit_l1,           // 16
+                      hysteresis_l2,      // 16
+                      hysteresis_l1,      // 16
+                      cnt_start,          // 16
+                      cnt_stop,           // 16
+                      window_limit,       // 32
+                      limit_interval,     // 32
                       trigger_delay}));   // 32
 
 endmodule
