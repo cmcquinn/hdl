@@ -91,3 +91,19 @@ ad_mem_hp0_interconnect sys_cpu_clk i2s_rx_dma/m_dest_axi
 ad_cpu_interrupt ps-6 mb-6 i2s_tx_dma/irq
 ad_cpu_interrupt ps-7 mb-7 i2s_rx_dma/irq
 ad_cpu_interrupt ps-14 mb-14 axi_fan_control_0/irq
+
+#system ID
+ad_ip_instance axi_sysid axi_sysid_0
+ad_ip_instance sysid_rom rom_sys_0
+
+ad_connect  axi_sysid_0/rom_addr   	rom_sys_0/rom_addr
+ad_connect  axi_sysid_0/sys_rom_data   	rom_sys_0/rom_data
+ad_connect  sys_cpu_clk                 rom_sys_0/clk
+
+ad_cpu_interconnect 0x45000000 axi_sysid_0
+
+ad_ip_parameter axi_sysid_0 CONFIG.ROM_ADDR_BITS 9
+ad_ip_parameter rom_sys_0 CONFIG.PATH_TO_FILE "[pwd]/mem_init_sys.txt"
+ad_ip_parameter rom_sys_0 CONFIG.ROM_ADDR_BITS 9
+set sys_cstring "sys rom custom string placeholder"
+sysid_gen_sys_init_file $sys_cstring
