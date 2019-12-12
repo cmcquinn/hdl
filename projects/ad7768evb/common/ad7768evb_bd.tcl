@@ -23,9 +23,9 @@ ad_ip_parameter ad7768_dma CONFIG.AXI_SLICE_DEST 0
 ad_ip_parameter ad7768_dma CONFIG.DMA_2D_TRANSFER 0
 ad_ip_parameter ad7768_dma CONFIG.DMA_DATA_WIDTH_SRC 32
 
-# ps7-hp1
+# ps7-hp0
 
-ad_ip_parameter sys_ps7 CONFIG.PCW_USE_S_AXI_HP1 1
+ad_ip_parameter sys_ps7 CONFIG.PCW_USE_S_AXI_HP0 1
 
 # gpio
 
@@ -57,6 +57,6 @@ ad_cpu_interrupt ps-12 mb-12  ad7768_gpio/ip2intc_irpt
 ad_cpu_interconnect 0x7C400000 ad7768_dma
 ad_cpu_interconnect 0x7C420000 ad7768_gpio
 
-ad_mem_hp1_interconnect sys_cpu_clk sys_ps7/S_AXI_HP1
-ad_mem_hp1_interconnect sys_cpu_clk ad7768_dma/m_dest_axi
+ad_mem_hp0_interconnect sys_cpu_clk sys_ps7/S_AXI_HP0
+ad_mem_hp0_interconnect sys_cpu_clk ad7768_dma/m_dest_axi
 

@@ -30,13 +30,7 @@ create_bd_port -dir I -from 63 -to 0 gpio_i
 create_bd_port -dir O -from 63 -to 0 gpio_o
 create_bd_port -dir O -from 63 -to 0 gpio_t
 
-# hdmi interface
 
-create_bd_port -dir O hdmi_out_clk
-create_bd_port -dir O hdmi_hsync
-create_bd_port -dir O hdmi_vsync
-create_bd_port -dir O hdmi_data_e
-create_bd_port -dir O -from 15 -to 0 hdmi_data
 
 # i2s
 
@@ -99,20 +93,8 @@ ad_ip_instance util_vector_logic sys_logic_inv
 ad_ip_parameter sys_logic_inv CONFIG.C_SIZE 1
 ad_ip_parameter sys_logic_inv CONFIG.C_OPERATION not
 
-# hdmi peripherals
 
-ad_ip_instance axi_clkgen axi_hdmi_clkgen
-ad_ip_instance axi_hdmi_tx axi_hdmi_core
-ad_ip_parameter axi_hdmi_core CONFIG.INTERFACE 16_BIT
 
-ad_ip_instance axi_dmac axi_hdmi_dma
-ad_ip_parameter axi_hdmi_dma CONFIG.DMA_TYPE_SRC 0
-ad_ip_parameter axi_hdmi_dma CONFIG.DMA_TYPE_DEST 1
-ad_ip_parameter axi_hdmi_dma CONFIG.CYCLIC true
-ad_ip_parameter axi_hdmi_dma CONFIG.AXI_SLICE_SRC 0
-ad_ip_parameter axi_hdmi_dma CONFIG.AXI_SLICE_DEST 0
-ad_ip_parameter axi_hdmi_dma CONFIG.DMA_2D_TRANSFER true
-ad_ip_parameter axi_hdmi_dma CONFIG.DMA_DATA_WIDTH_SRC 64
 
 # audio peripherals
 
@@ -170,7 +152,6 @@ ad_connect  gpio_o        sys_ps7/GPIO_O
 ad_connect  gpio_t        sys_ps7/GPIO_T
 ad_connect  fixed_io      sys_ps7/FIXED_IO
 ad_connect  iic_fmc       axi_iic_fmc/iic
-ad_connect  sys_200m_clk  axi_hdmi_clkgen/clk
 
 ad_connect  axi_iic_main/IIC sys_i2c_mixer/upstream
 
@@ -205,25 +186,6 @@ ad_connect  spi1_clk_o sys_ps7/SPI1_SCLK_O
 ad_connect  spi1_sdo_i sys_ps7/SPI1_MOSI_I
 ad_connect  spi1_sdo_o sys_ps7/SPI1_MOSI_O
 ad_connect  spi1_sdi_i sys_ps7/SPI1_MISO_I
-
-# hdmi
-
-ad_connect  sys_cpu_clk axi_hdmi_core/vdma_clk
-ad_connect  axi_hdmi_core/hdmi_clk axi_hdmi_clkgen/clk_0
-ad_connect  axi_hdmi_core/hdmi_out_clk hdmi_out_clk
-ad_connect  axi_hdmi_core/hdmi_16_hsync hdmi_hsync
-ad_connect  axi_hdmi_core/hdmi_16_vsync hdmi_vsync
-ad_connect  axi_hdmi_core/hdmi_16_data_e hdmi_data_e
-ad_connect  axi_hdmi_core/hdmi_16_data hdmi_data
-
-ad_connect  axi_hdmi_dma/m_axis axi_hdmi_core/s_axis
-
-ad_connect sys_cpu_resetn axi_hdmi_dma/s_axi_aresetn
-ad_connect sys_cpu_resetn axi_hdmi_dma/m_src_axi_aresetn
-
-ad_connect  sys_cpu_clk axi_hdmi_dma/s_axi_aclk
-ad_connect  sys_cpu_clk axi_hdmi_dma/m_src_axi_aclk
-ad_connect  sys_cpu_clk axi_hdmi_dma/m_axis_aclk
 
 # spdif audio
 
@@ -269,7 +231,6 @@ ad_connect  sys_cpu_clk                 rom_sys_0/clk
 # interrupts
 
 ad_connect  sys_concat_intc/dout  sys_ps7/IRQ_F2P
-ad_connect  sys_concat_intc/In15  axi_hdmi_dma/irq
 ad_connect  sys_concat_intc/In14  axi_iic_main/iic2intc_irpt
 ad_connect  sys_concat_intc/In13  GND
 ad_connect  sys_concat_intc/In12  GND
@@ -290,12 +251,6 @@ ad_connect  sys_concat_intc/In0   GND
 
 ad_cpu_interconnect 0x41600000 axi_iic_main
 ad_cpu_interconnect 0x45000000 axi_sysid_0
-ad_cpu_interconnect 0x79000000 axi_hdmi_clkgen
-ad_cpu_interconnect 0x43000000 axi_hdmi_dma
-ad_cpu_interconnect 0x70e00000 axi_hdmi_core
 ad_cpu_interconnect 0x75c00000 axi_spdif_tx_core
 ad_cpu_interconnect 0x77600000 axi_i2s_adi
 ad_cpu_interconnect 0x41620000 axi_iic_fmc
-
-ad_mem_hp0_interconnect sys_cpu_clk sys_ps7/S_AXI_HP0
-ad_mem_hp0_interconnect sys_cpu_clk axi_hdmi_dma/m_src_axi
