@@ -1,7 +1,7 @@
 
 ## Define the supported tool version
 if {![info exists REQUIRED_VIVADO_VERSION]} {
-  set REQUIRED_VIVADO_VERSION "2018.3"
+  set REQUIRED_VIVADO_VERSION "2019.2"
 }
 
 ## Define the ADI_IGNORE_VERSION_CHECK environment variable to skip version check
@@ -111,6 +111,11 @@ proc adi_project {project_name {mode 0} {parameter_list {}} } {
     set p_device "xczu9eg-ffvb1156-2-e"
     set p_board "xilinx.com:zcu102:part0:3.2"
     set sys_zynq 2
+  }
+  if [regexp "_snickerdoodle_black$" $project_name] {
+    set p_device "xc7z020clg400-3"
+    set p_board "krtkl.com:snickerdoodle_black:part0:1.0"
+    set sys_zynq 1
   }
 
   set VIVADO_VERSION [version -short]
