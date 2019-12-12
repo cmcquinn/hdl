@@ -5,7 +5,6 @@ ad_ip_parameter sys_ps7 CONFIG.PCW_PACKAGE_NAME                              {cl
 
 ad_ip_parameter sys_ps7 CONFIG.PCW_USE_M_AXI_GP0                             {1}
 ad_ip_parameter sys_ps7 CONFIG.PCW_USE_M_AXI_GP1                             {0}
-ad_ip_parameter sys_ps7 CONFIG.PCW_USE_S_AXI_ACP                             {1}
 
 ad_ip_parameter sys_ps7 CONFIG.PCW_USE_FABRIC_INTERRUPT                      {1}
 ad_ip_parameter sys_ps7 CONFIG.PCW_IRQ_F2P_INTR                              {1}
