@@ -48,6 +48,7 @@ xgui
 *.runs
 *.srcs
 *.sdk
+*.sim
 .Xil
 *_INFO.txt
 *_dump.txt
@@ -80,3 +81,5 @@ reconfig_mif
 gui
 .timestamp_intel
 
+# Visual Studio Code
+.vscode
