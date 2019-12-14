@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="ad77684_if_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="ad77684_if_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1000001fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="138"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="119" />
+   <wvobject type="logic" fp_name="/ad77684_if_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ready">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/data">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/adc_clk">
+      <obj_property name="ElementShortName">adc_clk</obj_property>
+      <obj_property name="ObjectShortName">adc_clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/adc_valid">
+      <obj_property name="ElementShortName">adc_valid</obj_property>
+      <obj_property name="ObjectShortName">adc_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/adc_data">
+      <obj_property name="ElementShortName">adc_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/sshot">
+      <obj_property name="ElementShortName">sshot</obj_property>
+      <obj_property name="ObjectShortName">sshot</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/format">
+      <obj_property name="ElementShortName">format[1:0]</obj_property>
+      <obj_property name="ObjectShortName">format[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/crc_enable">
+      <obj_property name="ElementShortName">crc_enable</obj_property>
+      <obj_property name="ObjectShortName">crc_enable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/crc_4_or_16_n">
+      <obj_property name="ElementShortName">crc_4_or_16_n</obj_property>
+      <obj_property name="ObjectShortName">crc_4_or_16_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/status_clr">
+      <obj_property name="ElementShortName">status_clr[35:0]</obj_property>
+      <obj_property name="ObjectShortName">status_clr[35:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/status">
+      <obj_property name="ElementShortName">status[35:0]</obj_property>
+      <obj_property name="ObjectShortName">status[35:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/test_data">
+      <obj_property name="ElementShortName">test_data[0:7][31:0]</obj_property>
+      <obj_property name="ObjectShortName">test_data[0:7][31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/i">
+      <obj_property name="ElementShortName">i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/enable">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider323" type="divider">
+      <obj_property name="label">ad7768-4 Interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/clk_in">
+      <obj_property name="ElementShortName">clk_in</obj_property>
+      <obj_property name="ObjectShortName">clk_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/ready_in">
+      <obj_property name="ElementShortName">ready_in</obj_property>
+      <obj_property name="ObjectShortName">ready_in</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/data_in">
+      <obj_property name="ElementShortName">data_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_clk">
+      <obj_property name="ElementShortName">adc_clk</obj_property>
+      <obj_property name="ObjectShortName">adc_clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_valid">
+      <obj_property name="ElementShortName">adc_valid</obj_property>
+      <obj_property name="ObjectShortName">adc_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_data">
+      <obj_property name="ElementShortName">adc_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/up_sshot">
+      <obj_property name="ElementShortName">up_sshot</obj_property>
+      <obj_property name="ObjectShortName">up_sshot</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/up_format">
+      <obj_property name="ElementShortName">up_format[1:0]</obj_property>
+      <obj_property name="ObjectShortName">up_format[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/up_crc_enable">
+      <obj_property name="ElementShortName">up_crc_enable</obj_property>
+      <obj_property name="ObjectShortName">up_crc_enable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/up_crc_4_or_16_n">
+      <obj_property name="ElementShortName">up_crc_4_or_16_n</obj_property>
+      <obj_property name="ObjectShortName">up_crc_4_or_16_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/up_status_clr">
+      <obj_property name="ElementShortName">up_status_clr[35:0]</obj_property>
+      <obj_property name="ObjectShortName">up_status_clr[35:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/up_status">
+      <obj_property name="ElementShortName">up_status[35:0]</obj_property>
+      <obj_property name="ObjectShortName">up_status[35:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_8">
+      <obj_property name="ElementShortName">adc_status_8[1:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_8[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_7">
+      <obj_property name="ElementShortName">adc_status_7[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_7[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_6">
+      <obj_property name="ElementShortName">adc_status_6[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_6[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_5">
+      <obj_property name="ElementShortName">adc_status_5[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_5[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_4">
+      <obj_property name="ElementShortName">adc_status_4[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_4[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_3">
+      <obj_property name="ElementShortName">adc_status_3[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_3[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_2">
+      <obj_property name="ElementShortName">adc_status_2[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_2[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_1">
+      <obj_property name="ElementShortName">adc_status_1[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_1[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_0">
+      <obj_property name="ElementShortName">adc_status_0[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_0[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq">
+      <obj_property name="ElementShortName">adc_seq[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_seq[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status">
+      <obj_property name="ElementShortName">adc_status[4:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_8">
+      <obj_property name="ElementShortName">adc_crc_8[63:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_8[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_mismatch_int">
+      <obj_property name="ElementShortName">adc_crc_mismatch_int[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_mismatch_int[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_valid">
+      <obj_property name="ElementShortName">adc_crc_valid</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_data">
+      <obj_property name="ElementShortName">adc_crc_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_mismatch_8">
+      <obj_property name="ElementShortName">adc_crc_mismatch_8[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_mismatch_8[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_valid_int">
+      <obj_property name="ElementShortName">adc_valid_int</obj_property>
+      <obj_property name="ObjectShortName">adc_valid_int</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_data_int">
+      <obj_property name="ElementShortName">adc_data_int[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data_int[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_int">
+      <obj_property name="ElementShortName">adc_seq_int[2:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_int[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_enable_int">
+      <obj_property name="ElementShortName">adc_enable_int</obj_property>
+      <obj_property name="ObjectShortName">adc_enable_int</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_scnt_int">
+      <obj_property name="ElementShortName">adc_crc_scnt_int[3:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_scnt_int[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_scnt_8">
+      <obj_property name="ElementShortName">adc_crc_scnt_8[3:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_scnt_8[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_data">
+      <obj_property name="ElementShortName">adc_seq_data[23:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_data[23:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_fmatch">
+      <obj_property name="ElementShortName">adc_seq_fmatch</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_fmatch</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_fdata">
+      <obj_property name="ElementShortName">adc_seq_fdata[23:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_fdata[23:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_foos">
+      <obj_property name="ElementShortName">adc_seq_foos</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_foos</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_enable_8">
+      <obj_property name="ElementShortName">adc_enable_8[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_enable_8[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_8">
+      <obj_property name="ElementShortName">adc_seq_8[23:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_8[23:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_valid_8">
+      <obj_property name="ElementShortName">adc_valid_8</obj_property>
+      <obj_property name="ObjectShortName">adc_valid_8</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_data_8">
+      <obj_property name="ElementShortName">adc_data_8[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data_8[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_d">
+      <obj_property name="ElementShortName">adc_ch_valid_d[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_d[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_d0">
+      <obj_property name="ElementShortName">adc_ch_data_d0[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_d0[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_d1">
+      <obj_property name="ElementShortName">adc_ch_data_d1[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_d1[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_d2">
+      <obj_property name="ElementShortName">adc_ch_data_d2[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_d2[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_d3">
+      <obj_property name="ElementShortName">adc_ch_data_d3[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_d3[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_d4">
+      <obj_property name="ElementShortName">adc_ch_data_d4[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_d4[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_d5">
+      <obj_property name="ElementShortName">adc_ch_data_d5[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_d5[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_d6">
+      <obj_property name="ElementShortName">adc_ch_data_d6[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_d6[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_d7">
+      <obj_property name="ElementShortName">adc_ch_data_d7[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_d7[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_0">
+      <obj_property name="ElementShortName">adc_ch_valid_0</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_0</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_1">
+      <obj_property name="ElementShortName">adc_ch_valid_1</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_2">
+      <obj_property name="ElementShortName">adc_ch_valid_2</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_2</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_3">
+      <obj_property name="ElementShortName">adc_ch_valid_3</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_3</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_4">
+      <obj_property name="ElementShortName">adc_ch_valid_4</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_4</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_5">
+      <obj_property name="ElementShortName">adc_ch_valid_5</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_5</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_6">
+      <obj_property name="ElementShortName">adc_ch_valid_6</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_6</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid_7">
+      <obj_property name="ElementShortName">adc_ch_valid_7</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid_7</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_0">
+      <obj_property name="ElementShortName">adc_ch_data_0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_0[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_1">
+      <obj_property name="ElementShortName">adc_ch_data_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_1[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_2">
+      <obj_property name="ElementShortName">adc_ch_data_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_3">
+      <obj_property name="ElementShortName">adc_ch_data_3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_3[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_4">
+      <obj_property name="ElementShortName">adc_ch_data_4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_4[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_5">
+      <obj_property name="ElementShortName">adc_ch_data_5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_5[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_6">
+      <obj_property name="ElementShortName">adc_ch_data_6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_6[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data_7">
+      <obj_property name="ElementShortName">adc_ch_data_7[31:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data_7[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_valid">
+      <obj_property name="ElementShortName">adc_ch_valid</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ch_data">
+      <obj_property name="ElementShortName">adc_ch_data[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_ch_data[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_cnt_p">
+      <obj_property name="ElementShortName">adc_cnt_p[8:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_cnt_p[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_valid_p">
+      <obj_property name="ElementShortName">adc_valid_p</obj_property>
+      <obj_property name="ObjectShortName">adc_valid_p</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_data_p">
+      <obj_property name="ElementShortName">adc_data_p[255:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data_p[255:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_data_d1">
+      <obj_property name="ElementShortName">adc_data_d1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data_d1[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_data_d2">
+      <obj_property name="ElementShortName">adc_data_d2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data_d2[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ready_d1">
+      <obj_property name="ElementShortName">adc_ready_d1</obj_property>
+      <obj_property name="ObjectShortName">adc_ready_d1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ready">
+      <obj_property name="ElementShortName">adc_ready</obj_property>
+      <obj_property name="ObjectShortName">adc_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ready_d">
+      <obj_property name="ElementShortName">adc_ready_d</obj_property>
+      <obj_property name="ObjectShortName">adc_ready_d</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_sshot_m1">
+      <obj_property name="ElementShortName">adc_sshot_m1</obj_property>
+      <obj_property name="ObjectShortName">adc_sshot_m1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_sshot">
+      <obj_property name="ElementShortName">adc_sshot</obj_property>
+      <obj_property name="ObjectShortName">adc_sshot</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_format_m1">
+      <obj_property name="ElementShortName">adc_format_m1[1:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_format_m1[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_format">
+      <obj_property name="ElementShortName">adc_format[1:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_format[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_enable_m1">
+      <obj_property name="ElementShortName">adc_crc_enable_m1</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_enable_m1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_enable">
+      <obj_property name="ElementShortName">adc_crc_enable</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_enable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_4_or_16_n_m1">
+      <obj_property name="ElementShortName">adc_crc_4_or_16_n_m1</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_4_or_16_n_m1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_4_or_16_n">
+      <obj_property name="ElementShortName">adc_crc_4_or_16_n</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_4_or_16_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_clr_m1">
+      <obj_property name="ElementShortName">adc_status_clr_m1[35:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_clr_m1[35:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_clr">
+      <obj_property name="ElementShortName">adc_status_clr[35:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_clr[35:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_clr_d">
+      <obj_property name="ElementShortName">adc_status_clr_d[35:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_clr_d[35:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_in_s">
+      <obj_property name="ElementShortName">adc_crc_in_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_in_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_s">
+      <obj_property name="ElementShortName">adc_crc_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_crc_mismatch_s">
+      <obj_property name="ElementShortName">adc_crc_mismatch_s</obj_property>
+      <obj_property name="ObjectShortName">adc_crc_mismatch_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_fmatch_s">
+      <obj_property name="ElementShortName">adc_seq_fmatch_s</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_fmatch_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_fupdate_s">
+      <obj_property name="ElementShortName">adc_seq_fupdate_s</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_fupdate_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_enable_8_s">
+      <obj_property name="ElementShortName">adc_enable_8_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_enable_8_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_seq_8_s">
+      <obj_property name="ElementShortName">adc_seq_8_s[23:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_seq_8_s[23:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_cnt_enable_1_s">
+      <obj_property name="ElementShortName">adc_cnt_enable_1_s</obj_property>
+      <obj_property name="ObjectShortName">adc_cnt_enable_1_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_cnt_enable_4_s">
+      <obj_property name="ElementShortName">adc_cnt_enable_4_s</obj_property>
+      <obj_property name="ObjectShortName">adc_cnt_enable_4_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_cnt_enable_8_s">
+      <obj_property name="ElementShortName">adc_cnt_enable_8_s</obj_property>
+      <obj_property name="ObjectShortName">adc_cnt_enable_8_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_cnt_enable_s">
+      <obj_property name="ElementShortName">adc_cnt_enable_s</obj_property>
+      <obj_property name="ObjectShortName">adc_cnt_enable_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_data_in_s">
+      <obj_property name="ElementShortName">adc_data_in_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data_in_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_ready_in_s">
+      <obj_property name="ElementShortName">adc_ready_in_s</obj_property>
+      <obj_property name="ObjectShortName">adc_ready_in_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ad77684_if_tb/ad77684_if_i/adc_clk_in_s">
+      <obj_property name="ElementShortName">adc_clk_in_s</obj_property>
+      <obj_property name="ObjectShortName">adc_clk_in_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ad77684_if_tb/ad77684_if_i/adc_status_clr_s">
+      <obj_property name="ElementShortName">adc_status_clr_s[35:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_status_clr_s[35:0]</obj_property>
+   </wvobject>
+</wave_config>
